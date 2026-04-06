@@ -8,11 +8,9 @@ import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import CloudIcon from '@mui/icons-material/Cloud';
-import FlareIcon from '@mui/icons-material/Flare';
 import MobileScreenShareIcon from '@mui/icons-material/MobileScreenShare';
 
 const ControlPanel = ({ nodes, sendCommand }) => {
-  const [selectedNode, setSelectedNode] = useState(null);
   const [showConditionModal, setShowConditionModal] = useState(false);
   const [modalNodeId, setModalNodeId] = useState(null);
 

@@ -4,7 +4,6 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Alert } from '@mui/material';
 import ThermometerIcon from '@mui/icons-material/Thermostat';
 import WaterDropIcon from '@mui/icons-material/Opacity';
 import VibrateIcon from '@mui/icons-material/Vibration';
@@ -12,14 +11,6 @@ import BatteryFullIcon from '@mui/icons-material/BatteryFull';
 import WarningIcon from '@mui/icons-material/Warning';
 
 const Dashboard = ({ nodes }) => {
-  const [chartData, setChartData] = useState([]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setChartData(prev => [...prev.slice(-29)]);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [nodes]);
 
   const getFailureReasonDisplay = (reason) => {
     const reasons = {
