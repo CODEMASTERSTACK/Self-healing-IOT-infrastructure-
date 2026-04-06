@@ -15,6 +15,13 @@ import DataRouting from './components/DataRouting';
 import SensorInfo from './components/SensorInfo';
 
 function App() {
+  // Get backend URL from environment or use localhost
+  const getBackendURL = () => {
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    // Convert http/https to ws/wss for WebSocket
+    return apiUrl.replace(/^http/, 'ws');
+  };
+
   const {
     nodes,
     edges,
@@ -24,7 +31,7 @@ function App() {
     error,
     sendCommand,
     networkState
-  } = useWebSocket('ws://localhost:5000');
+  } = useWebSocket(getBackendURL());
 
   const [previousFailures, setPreviousFailures] = useState(new Set());
   const [showMobileWarning, setShowMobileWarning] = useState(window.innerWidth < 1024);

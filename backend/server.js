@@ -15,10 +15,15 @@ const { generatePredictions, failNode, recoverNode, resetNetwork } = require('./
 const { computeRoute } = require('./simulation/routingEngine');
 
 const PORT = process.env.PORT || 5000;
+const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:3000';
 
 // Initialize Express app
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: CORS_ORIGIN,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Create HTTP server for WebSocket
