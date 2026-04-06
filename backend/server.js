@@ -327,6 +327,24 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+/**
+ * Root endpoint
+ */
+app.get('/', (req, res) => {
+  res.json({
+    message: 'IoT Simulation Backend',
+    status: 'running',
+    endpoints: {
+      health: '/api/health',
+      state: '/api/state',
+      failNode: '/api/fail-node/:nodeId',
+      reset: '/api/reset',
+      predictions: '/api/predictions',
+      route: '/api/route/:sourceNodeId'
+    }
+  });
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error('Server error:', err);
